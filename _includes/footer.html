@@ -1,30 +1,61 @@
 <footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-
-  <div class="wrapper">
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">
-            {%- if site.author -%}
-              {{ site.author | escape }}
-            {%- else -%}
-              {{ site.title | escape }}
-            {%- endif -%}
-            </li>
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
-      </div>
+    <data class="u-url" href="{{ "/" | relative_url }}"></data>
+    <div class="wrapper">
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">
+                        {%- if site.author -%} {{ site.author | escape }} {%- else -%} {{ site.title | escape }} {%- endif -%}
+                    </li>
+                    {%- if site.email -%}
+                    <li>
+                        <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+                    </li>
+                    {%- endif -%}
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                {%- include social.html -%}
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>{{- site.description | escape -}}</p>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <!-- Add the TIXAE Agents widget script here -->
+    <div style="width: '500px'; height: '500px';" id="VG_OVERLAY_CONTAINER">
+        <!-- Here is where TIXAE Agents renders the widget. -->
+        <!-- Set width, height for 500px as an example after changing render to 'full-width' -->
+    </div>
+
+    <!-- Remove 'defer' if you want widget to load faster (Will affect website loading) -->
+    <script defer>
+        (function() {
+            window.VG_CONFIG = {
+                ID: "o1dfbocm4s236896", // REPLACE WITH YOUR AGENT ID
+                region: 'na', // REPLACE WITH YOUR ACCOUNT REGION
+                render: 'bottom-right', // REPLACE WITH 'full-width' for full width widget or "bottom-left" to change position
+                stylesheets: [
+                    // Base TIXAE Agents CSS
+                    "https://theabuzzooka.github.io/vg-hosting-template-v2/assets/vg_live_build/styles.css",
+                    // Add your custom css stylesheets, Can also add relative URL ('/public/your-file.css)
+                ],
+                // Optional user data -- start
+                user: {
+                    name: 'John Doe', // User's name
+                    email: 'johndoe@gmail.com', // User's email
+                    phone: '+1234567890', // User's phone number
+                }
+                // Optional user data -- end
+                // **
+                // userID: 'USER_ID', // If you want to use your own user_id
+                // autostart: true, // Whether to autostart the chatbot with the proactive message
+            }
+            var VG_SCRIPT = document.createElement("script");
+            VG_SCRIPT.src = "https://theabuzzooka.github.io/vg-hosting-template-v2/assets/vg_live_build/vg_bundle.js";
+            VG_SCRIPT.defer = true; // Remove 'defer' if you want widget to load faster (Will affect website loading)
+            document.body.appendChild(VG_SCRIPT);
+        })()
+    </script>
 </footer>
